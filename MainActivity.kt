@@ -1,0 +1,75 @@
+package com.example.ca
+
+import android.os.Bundle
+import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.ca.ui.theme.CATheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            CATheme {
+                    Detail()
+
+            }
+        }
+    }
+}
+
+@Composable
+fun Detail() {
+    var enter by remember { mutableStateOf("") }
+    Column(modifier = Modifier.padding(20.dp).fillMaxSize(),horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
+        Text(text = "Muskan kumari", fontSize = 40.sp, modifier = Modifier.padding(20.dp).background(Color.Gray))
+        Column (){
+            Text("Hostel name",fontSize = 20.sp)
+            Text("Campus hostel gh4", color = Color.Blue)
+            Text("name", fontSize = 20.sp)
+            Text("Muskan kumari",color=Color.Blue)
+            Text("registration number", fontSize = 20.sp)
+            Text("12312161",color=Color.Blue)
+            Text("check hostel  ", fontSize = 20.sp)
+            TextField(value = "enter", onValueChange = { enter = it })
+            Button(onClick = {}, modifier = Modifier.padding(30.dp)) {
+                Text("Book now", fontSize = 30.sp)
+            }
+
+        }
+    }
+
+
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    CATheme {
+        Detail()
+    }
+}
